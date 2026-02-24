@@ -3,10 +3,10 @@
   "displayName": "Antigravity Pixel Agents",
   "description": "Pixel art office where your Antigravity IDE agents come to life as animated characters",
   "version": "1.0.0",
-  "publisher": "pablodelucca",
+  "publisher": "caavera",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pablodelucca/pixel-agents"
+    "url": "https://github.com/caavera/antigravity-pixel-agents"
   },
   "icon": "icon.png",
   "license": "MIT",
