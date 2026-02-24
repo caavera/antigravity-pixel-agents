@@ -127,10 +127,6 @@ function App() {
 
   const handleToggleDebugMode = useCallback(() => setIsDebugMode((prev) => !prev), [])
 
-  const handleSelectAgent = useCallback((id: number) => {
-    vscode.postMessage({ type: 'focusAgent', id })
-  }, [])
-
   const containerRef = useRef<HTMLDivElement>(null)
 
   const [editorTickForKeyboard, setEditorTickForKeyboard] = useState(0)
@@ -145,10 +141,6 @@ function App() {
     useCallback(() => setEditorTickForKeyboard((n) => n + 1), []),
     editor.handleToggleEditMode,
   )
-
-  const handleCloseAgent = useCallback((id: number) => {
-    vscode.postMessage({ type: 'closeAgent', id })
-  }, [])
 
   const handleClick = useCallback((agentId: number) => {
     // If clicked agent is a sub-agent, focus the parent's terminal instead
@@ -225,7 +217,6 @@ function App() {
 
       <BottomToolbar
         isEditMode={editor.isEditMode}
-        onOpenClaude={editor.handleOpenClaude}
         onToggleEditMode={editor.handleToggleEditMode}
         isDebugMode={isDebugMode}
         onToggleDebugMode={handleToggleDebugMode}
@@ -292,7 +283,6 @@ function App() {
         containerRef={containerRef}
         zoom={editor.zoom}
         panRef={editor.panRef}
-        onCloseAgent={handleCloseAgent}
       />
 
       {isDebugMode && (
@@ -302,7 +292,7 @@ function App() {
           agentTools={agentTools}
           agentStatuses={agentStatuses}
           subagentTools={subagentTools}
-          onSelectAgent={handleSelectAgent}
+          onSelectAgent={() => { }}
         />
       )}
     </div>

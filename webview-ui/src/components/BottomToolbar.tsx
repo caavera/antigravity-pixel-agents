@@ -3,7 +3,6 @@ import { SettingsModal } from './SettingsModal.js'
 
 interface BottomToolbarProps {
   isEditMode: boolean
-  onOpenClaude: () => void
   onToggleEditMode: () => void
   isDebugMode: boolean
   onToggleDebugMode: () => void
@@ -43,7 +42,6 @@ const btnActive: React.CSSProperties = {
 
 export function BottomToolbar({
   isEditMode,
-  onOpenClaude,
   onToggleEditMode,
   isDebugMode,
   onToggleDebugMode,
@@ -54,23 +52,6 @@ export function BottomToolbar({
   return (
     <div style={panelStyle}>
       <button
-        onClick={onOpenClaude}
-        onMouseEnter={() => setHovered('agent')}
-        onMouseLeave={() => setHovered(null)}
-        style={{
-          ...btnBase,
-          padding: '5px 12px',
-          background:
-            hovered === 'agent'
-              ? 'var(--pixel-agent-hover-bg)'
-              : 'var(--pixel-agent-bg)',
-          border: '2px solid var(--pixel-agent-border)',
-          color: 'var(--pixel-agent-text)',
-        }}
-      >
-        + Agent
-      </button>
-      <button
         onClick={onToggleEditMode}
         onMouseEnter={() => setHovered('edit')}
         onMouseLeave={() => setHovered(null)}
@@ -78,9 +59,9 @@ export function BottomToolbar({
           isEditMode
             ? { ...btnActive }
             : {
-                ...btnBase,
-                background: hovered === 'edit' ? 'var(--pixel-btn-hover-bg)' : btnBase.background,
-              }
+              ...btnBase,
+              background: hovered === 'edit' ? 'var(--pixel-btn-hover-bg)' : btnBase.background,
+            }
         }
         title="Edit office layout"
       >
@@ -95,9 +76,9 @@ export function BottomToolbar({
             isSettingsOpen
               ? { ...btnActive }
               : {
-                  ...btnBase,
-                  background: hovered === 'settings' ? 'var(--pixel-btn-hover-bg)' : btnBase.background,
-                }
+                ...btnBase,
+                background: hovered === 'settings' ? 'var(--pixel-btn-hover-bg)' : btnBase.background,
+              }
           }
           title="Settings"
         >
